@@ -5,11 +5,11 @@ public class Converter {
     private static String currency1;
     private static String currency2;
 
-    private static HashMap<String,Double> convRatesUSD = new HashMap<>();
-    private static HashMap<String,Double> convRatesAUD = new HashMap<>();
-    private static HashMap<String,Double> convRatesCAD = new HashMap<>();
-    private static HashMap<String,Double> convRatesGBP = new HashMap<>();
-    private static HashMap<String,Double> convRatesYEN = new HashMap<>();
+    private static final HashMap<String,Double> convRatesUSD = new HashMap<>();
+    private static final HashMap<String,Double> convRatesAUD = new HashMap<>();
+    private static final HashMap<String,Double> convRatesCAD = new HashMap<>();
+    private static final HashMap<String,Double> convRatesGBP = new HashMap<>();
+    private static final HashMap<String,Double> convRatesYEN = new HashMap<>();
 
 
     // Converter Constructor
@@ -65,17 +65,27 @@ public class Converter {
         return currency2;
     }
 
-    public String getConversionDetails() {
-        return "You are converting from " + currency1 +
-                " to " + currency2 + ".";
-    }
+    /*public String getConversionDetails() {
+        return currency1 + " ==> " + currency2;
+    }*/
 
     // "Generic" converter method so we don't have 1 each per different currency.
 
     public double getConvertedAmount(double amount, String currType) {
         double convertedAmount = 0.0;
 
-        if (currType.equals("USD")) {
+        switch (currType) {
+            case "USD" -> convertedAmount = amount * convRatesUSD.get(currency2);
+            case "AUD" -> convertedAmount = amount * convRatesAUD.get(currency2);
+            case "CAD" -> convertedAmount = amount * convRatesCAD.get(currency2);
+            case "GBP" -> convertedAmount = amount * convRatesGBP.get(currency2);
+            case "YEN" -> convertedAmount = amount * convRatesYEN.get(currency2);
+            default -> {
+                convertedAmount = 0.0;
+            }
+        }
+
+        /*if (currType.equals("USD")) {
             convertedAmount = amount * convRatesUSD.get(currency2);
         }
         else if (currType.equals("AUD")) {
@@ -89,7 +99,7 @@ public class Converter {
         }
         else if (currType.equals("YEN")) {
             convertedAmount = amount * convRatesYEN.get(currency2);
-        }
+        }*/
 
         return convertedAmount;
     }
