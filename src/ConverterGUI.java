@@ -7,9 +7,9 @@ public class ConverterGUI implements ActionListener {
     static final int HEIGHT = 300;
     JFrame f;
     JMenu menu;
-    JMenuItem exit, reset;
+    JMenuItem exit;
     JMenuBar mb;
-    JLabel currencyFromLabel, currencyToLabel, conversionResult;
+    JLabel currencyFromLabel, currencyToLabel;
     JComboBox<String> currencyFromCB, currencyToCB;
     JTextField dollarAmount;
     JButton convert;
@@ -35,9 +35,9 @@ public class ConverterGUI implements ActionListener {
         currencyToLabel.setBounds(200,10,90,30);
 
         // Setup the currency combo boxes and add them to the frame.
-        String currencies[] = {"AUD", "CAD", "GBP", "USD", "YEN"};
-        currencyFromCB= new JComboBox(currencies);
-        currencyToCB = new JComboBox(currencies);
+        String[] currencies = {"AUD", "CAD", "GBP", "USD", "YEN"};
+        currencyFromCB= new JComboBox<>(currencies);
+        currencyToCB = new JComboBox<>(currencies);
         currencyFromCB.setBounds(50,50,90,20);
         currencyToCB.setBounds(200,50,90,20);
 

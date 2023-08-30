@@ -72,7 +72,7 @@ public class Converter {
     // "Generic" converter method so we don't have 1 each per different currency.
 
     public double getConvertedAmount(double amount, String currType) {
-        double convertedAmount = 0.0;
+        double convertedAmount;
 
         switch (currType) {
             case "USD" -> convertedAmount = amount * convRatesUSD.get(currency2);
@@ -80,9 +80,7 @@ public class Converter {
             case "CAD" -> convertedAmount = amount * convRatesCAD.get(currency2);
             case "GBP" -> convertedAmount = amount * convRatesGBP.get(currency2);
             case "YEN" -> convertedAmount = amount * convRatesYEN.get(currency2);
-            default -> {
-                convertedAmount = 0.0;
-            }
+            default -> convertedAmount = 0.0;
         }
 
         /*if (currType.equals("USD")) {
