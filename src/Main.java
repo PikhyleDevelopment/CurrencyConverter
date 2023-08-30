@@ -1,16 +1,30 @@
-import java.util.Scanner;
-
 public class Main {
+
+    /*JFrame f;
+    Main() {
+        f = new JFrame("Currency Converter");
+        String currencies[] = {"AUD","CAD","GBP","USD","YEN"};
+        JComboBox currencyCombo = new JComboBox(currencies);
+        currencyCombo.setBounds(50,50,90,20);
+        f.add(currencyCombo);
+        f.setLayout(null);
+        f.setSize(600,600);
+        f.setVisible(true);
+    }*/
+    static ConverterGUI gui = new ConverterGUI();
     public static void main(String[] args) {
         // local variables
-        double conversionResult = 0.00;
+        /*double conversionResult = 0.00;
         String firstName;
         String convFrom;
         String convTo;
         // Our instance of the "Converter" object
-        Converter converter;
+        Converter converter;*/
+        //new Main();
 
-        // Initialize the scanner
+        gui.mainWindow();
+
+        /*// Initialize the scanner
         Scanner in = new Scanner(System.in);
         // System greeting
         System.out.println("Welcome to the USD Currency Converter.");
@@ -75,6 +89,6 @@ public class Main {
 
 
         System.out.println("Goodbye.");
-        in.close();
+        in.close();*/
     }
 }
