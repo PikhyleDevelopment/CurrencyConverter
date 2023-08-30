@@ -34,7 +34,7 @@ public class Main {
         System.out.print("Amount of " + converter.getStartingCurrency() + ": ");
         double curr1Amount = Double.parseDouble(in.nextLine());
 
-        System.out.println("You want to convert " + curr1Amount + converter.getStartingCurrency() + " to " + converter.getEndingCurrency() + "?");
+        System.out.println("You want to convert " + curr1Amount + converter.getStartingCurrency() + " to " + converter.getEndingCurrency() + "?[Y/N]");
         String confirmation = in.nextLine().toUpperCase().substring(0,1);
 
         if (confirmation.equals("Y")) {
