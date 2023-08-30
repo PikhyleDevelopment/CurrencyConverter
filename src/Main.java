@@ -3,11 +3,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         // local variables
-        boolean isRunning = true;
         double conversionResult = 0.00;
-        String firstName = null;
-        String convFrom = null;
-        String convTo = null;
+        String firstName;
+        String convFrom;
+        String convTo;
         // Our instance of the "Converter" object
         Converter converter;
 
@@ -20,7 +19,7 @@ public class Main {
         System.out.printf("Welcome, %s!\n", firstName);
 
         // Main application loop start
-        while (isRunning) {
+        while (true) {
             System.out.println("The currently available conversion rates are: ");
             System.out.println(" AUD\n CAD\n GBP\n USD\n YEN");
             System.out.println("You can always type EXIT to leave.");
@@ -31,14 +30,14 @@ public class Main {
             convFrom = in.nextLine();
             // Check exit condition
             if (convFrom.equalsIgnoreCase("EXIT")) {
-                isRunning = false;
+                //isRunning = false;
                 break;
             }
             System.out.print("Convert TO currency: ");
             convTo = in.nextLine();
             // Check exit condition
             if (convTo.equalsIgnoreCase("EXIT")) {
-                isRunning = false;
+                //isRunning = false;
                 break;
             }
 
@@ -54,22 +53,19 @@ public class Main {
             String confirmation = in.nextLine().toUpperCase().substring(0, 1);
 
             if (confirmation.equals("Y")) {
-                if (converter.getStartingCurrency().equals("USD")) {
-                    conversionResult = converter.getConvertedAmount(curr1Amount, "USD");
-                } else if (converter.getStartingCurrency().equals("AUD")) {
-                    conversionResult = converter.getConvertedAmount(curr1Amount, "AUD");
-                } else if (converter.getStartingCurrency().equals("CAD")) {
-                    conversionResult = converter.getConvertedAmount(curr1Amount, "CAD");
-                } else if (converter.getStartingCurrency().equals("GBP")) {
-                    conversionResult = converter.getConvertedAmount(curr1Amount, "GBP");
-                } else if (converter.getStartingCurrency().equals("YEN")) {
-                    conversionResult = converter.getConvertedAmount(curr1Amount, "YEN");
-                } else {
-                    System.out.printf("%s is not yet implemented.", converter.getStartingCurrency());
-                    System.exit(98);
+                switch (converter.getStartingCurrency()) {
+                    case "USD" -> conversionResult = converter.getConvertedAmount(curr1Amount, "USD");
+                    case "AUD" -> conversionResult = converter.getConvertedAmount(curr1Amount, "AUD");
+                    case "CAD" -> conversionResult = converter.getConvertedAmount(curr1Amount, "CAD");
+                    case "GBP" -> conversionResult = converter.getConvertedAmount(curr1Amount, "GBP");
+                    case "YEN" -> conversionResult = converter.getConvertedAmount(curr1Amount, "YEN");
+                    default -> {
+                        System.out.printf("%s is not yet implemented.", converter.getStartingCurrency());
+                        System.exit(98);
+                    }
                 }
             } else {
-                System.out.println("User terminated session. Thank you.");
+                System.out.println("User terminated session. Thank you. Goodbye.");
                 System.exit(99);
             }
 
