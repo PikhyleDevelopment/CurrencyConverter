@@ -74,6 +74,12 @@ public class Converter {
     public double getConvertedAmount(double amount, String currType) {
         double convertedAmount;
 
+        if (amount <= 0) {
+            convertedAmount = 0;
+            System.out.println("Invalid number passed to converter.");
+            return convertedAmount;
+        }
+
         switch (currType) {
             case "USD" -> convertedAmount = amount * convRatesUSD.get(currency2);
             case "AUD" -> convertedAmount = amount * convRatesAUD.get(currency2);
