@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConverterGUI implements ActionListener {
-    static final int WIDTH = 600;
+    static final int WIDTH = 500;
     static final int HEIGHT = 300;
     JFrame f;
     JMenu menu;
@@ -64,24 +64,29 @@ public class ConverterGUI implements ActionListener {
         f.setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == exit) {
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == exit) {
             // Exit the application
+            f.dispose();
             System.exit(5);
         }
-        if (e.getSource() == convert) {
-            // Setup our converter
-            converter = new Converter(currencyFromCB.getItemAt(currencyFromCB.getSelectedIndex()),
-                    currencyToCB.getItemAt(currencyToCB.getSelectedIndex()));
+        if (ae.getSource() == convert) {
+            try {
+                // Setup our converter
+                converter = new Converter(currencyFromCB.getItemAt(currencyFromCB.getSelectedIndex()),
+                        currencyToCB.getItemAt(currencyToCB.getSelectedIndex()));
 
-            // Set up local variables to handle the conversion calculation
-            double amount = Double.parseDouble(dollarAmount.getText());
-            String selectedCurrency = converter.getStartingCurrency();
-            double convertedAmount = converter.getConvertedAmount(amount, selectedCurrency);
-            String message = amount + " " + selectedCurrency + " is equal to " + convertedAmount +
-                    " " + converter.getEndingCurrency();
+                // Set up local variables to handle the conversion calculation
+                double amount = Double.parseDouble(dollarAmount.getText());
+                String selectedCurrency = converter.getStartingCurrency();
+                double convertedAmount = converter.getConvertedAmount(amount, selectedCurrency);
+                String message = amount + " " + selectedCurrency + " is equal to " + convertedAmount +
+                        " " + converter.getEndingCurrency();
 
-            JOptionPane.showMessageDialog(f, message);
+                JOptionPane.showMessageDialog(f, message);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(f, e + "\nPlease enter a valid number.");
+            }
         }
     }
 

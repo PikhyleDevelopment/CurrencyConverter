@@ -83,22 +83,6 @@ public class Converter {
             default -> convertedAmount = 0.0;
         }
 
-        /*if (currType.equals("USD")) {
-            convertedAmount = amount * convRatesUSD.get(currency2);
-        }
-        else if (currType.equals("AUD")) {
-            convertedAmount = amount * convRatesAUD.get(currency2);
-        }
-        else if (currType.equals("CAD")) {
-            convertedAmount = amount * convRatesCAD.get(currency2);
-        }
-        else if (currType.equals("GBP")) {
-            convertedAmount = amount * convRatesGBP.get(currency2);
-        }
-        else if (currType.equals("YEN")) {
-            convertedAmount = amount * convRatesYEN.get(currency2);
-        }*/
-
         return convertedAmount;
     }
 }
