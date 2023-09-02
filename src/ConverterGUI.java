@@ -1,10 +1,13 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConverterGUI implements ActionListener {
     static final int WIDTH = 500;
     static final int HEIGHT = 300;
+    static final Color bgColor = new Color(245, 213, 118);
+    ImageIcon icon;
     JFrame f;
     JMenu menu;
     JMenuItem exit;
@@ -50,6 +53,14 @@ public class ConverterGUI implements ActionListener {
         convert.setBounds(200,75,90,20);
         convert.addActionListener(this);
 
+        // Add our icon to the frame
+        try {
+            icon = new ImageIcon("resources/salary.png");
+            f.setIconImage(icon.getImage());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
         // Frame settings
         f.setJMenuBar(mb);
         f.add(currencyFromLabel);
@@ -61,6 +72,9 @@ public class ConverterGUI implements ActionListener {
         f.setLayout(null);
         f.setSize(WIDTH,HEIGHT);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        f.getContentPane().setBackground(bgColor);
+        f.setResizable(false);
+
         f.setVisible(true);
     }
 
